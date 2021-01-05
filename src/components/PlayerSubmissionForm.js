@@ -5,12 +5,12 @@ import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = (props) => {
   const [formFields, setFormFields] = useState({
-    // adj1: '',
-    // noun1: '',
-    // adv: '',
-    // verb: '',
-    // adj2: '',
-    // noun2: ''
+    adj1: '',
+    noun1: '',
+    adv: '',
+    verb: '',
+    adj2: '',
+    noun2: ''
   });
 
   const onInputChange = (event) => {
@@ -22,30 +22,56 @@ const PlayerSubmissionForm = (props) => {
     setFormFields(newFormFields);
   };
 
+  const isValidInput = (val) => {
+    return val.length
+  }
+
+  const formSubmission = () => props.fields.map(field => {
+    if (typeof field === 'object') {
+      return formFields[field.key]
+    }
+    return field
+  }).join(' ')
+
+  const onFormSubmit = (event) => {
+    // prevent the browser from trying to submit the form.
+    event.preventDefault();
+    props.sendSubmission(formSubmission());
+
+    setFormFields({
+      fullName: '',
+      email: '',
+    });
+  };
+
   return (
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{  }</h3>
 
-      <form className="PlayerSubmissionForm__form" >
+      <form className="PlayerSubmissionForm__form" onSubmit={ onFormSubmit } >
 
         <div className="PlayerSubmissionForm__poem-inputs">
 
           {
-            props.fields.map((field) => {
+            props.fields.map((field, index) => {
 
               if (typeof field === 'object') {
                 return(
                   <input
+                    key={ index }
                     value={ formFields[field.key] }
                     name={ field.key }
                     placeholder={ field.placeholder }
                     type="text" 
                     onChange={ onInputChange }
+                    className={ isValidInput(formFields[field.key]) ? 'PlayerSubmissionForm__input' : 'PlayerSubmissionForm__input--invalid' }
                   />
                 )
               } else {
                 return(
-                  <span>{ field }</span>
+                  <span key={ index }>
+                    { field }
+                  </span>
                 )
               }
             })
