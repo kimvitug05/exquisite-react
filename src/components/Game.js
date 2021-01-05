@@ -27,7 +27,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm fields={ FIELDS } />
 
       <FinalPoem />
 
