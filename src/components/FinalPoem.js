@@ -22,9 +22,12 @@ const FinalPoem = (props) => {
         </div>
       </section>
 
-      <div className="FinalPoem__reveal-btn-container">
-        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={ () => { props.revealPoem() } } />
-      </div>
+      {
+        props.isSubmitted ||
+        <div className="FinalPoem__reveal-btn-container">
+          <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={ () => { props.revealPoem() } } />
+        </div>
+      }
     </div>
   );
 }

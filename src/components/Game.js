@@ -36,9 +36,9 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission submission={ submissions[submissions.length - 1] } />
+      { isSubmitted || !submissions.length || <RecentSubmission submission={ submissions[submissions.length - 1] } /> }
 
-      <PlayerSubmissionForm fields={ FIELDS } sendSubmission={ addSubmission } index={ submissions.length } />
+      { isSubmitted || <PlayerSubmissionForm fields={ FIELDS } sendSubmission={ addSubmission } index={ submissions.length + 1 } /> }
 
       <FinalPoem isSubmitted={ isSubmitted } submissions={ submissions } revealPoem={ revealPoem } />
 

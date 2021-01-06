@@ -23,7 +23,7 @@ const PlayerSubmissionForm = (props) => {
   };
 
   const isValidInput = (val) => {
-    return val.length
+    return val && val.length
   }
 
   const formSubmission = () => props.fields.map(field => {
@@ -50,7 +50,7 @@ const PlayerSubmissionForm = (props) => {
 
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{ props.index + 1 }</h3>
+      <h3>Player Submission Form for Player #{ props.index }</h3>
 
       <form className="PlayerSubmissionForm__form" onSubmit={ onFormSubmit } >
 
