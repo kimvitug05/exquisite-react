@@ -8,11 +8,22 @@ const FinalPoem = (props) => {
     <div className="FinalPoem">
       <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
-
+        <div>
+          {
+            props.isSubmitted &&
+            props.submissions.map((submission, index) => {
+              return(
+                <p key={ index }>
+                  { submission }
+                </p>
+              )
+            })
+          }
+        </div>
       </section>
 
       <div className="FinalPoem__reveal-btn-container">
-        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
+        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={ () => { props.revealPoem() } } />
       </div>
     </div>
   );
