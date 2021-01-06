@@ -39,14 +39,18 @@ const PlayerSubmissionForm = (props) => {
     props.sendSubmission(formSubmission());
 
     setFormFields({
-      fullName: '',
-      email: '',
+      adj1: '',
+      noun1: '',
+      adv: '',
+      verb: '',
+      adj2: '',
+      noun2: ''
     });
   };
 
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{  }</h3>
+      <h3>Player Submission Form for Player #{ props.index + 1 }</h3>
 
       <form className="PlayerSubmissionForm__form" onSubmit={ onFormSubmit } >
 

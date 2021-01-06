@@ -33,7 +33,7 @@ const Game = () => {
 
       <RecentSubmission submission={ submissions[submissions.length - 1] } />
 
-      <PlayerSubmissionForm fields={ FIELDS } sendSubmission={ addSubmission } />
+      <PlayerSubmissionForm fields={ FIELDS } sendSubmission={ addSubmission } index={ submissions.length } />
 
       <FinalPoem />
 
